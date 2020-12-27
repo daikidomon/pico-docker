@@ -6,7 +6,7 @@ services:
       args:
         TZ: $TZ
     volumes:
-      - ./pico:/var/www/html/pico
+      - ./src:/var/www/html/
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
 
   nginx:
@@ -15,9 +15,9 @@ services:
       args:
         TZ: $TZ
     ports:
-      - "80:8080"
+      - "80:80"
     volumes:
-      - ./nginx/conf:/etc/nginx/conf.
-      - ./pico:/var/www/html/pico
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./src:/var/www/html/
     depends_on:
       - php
