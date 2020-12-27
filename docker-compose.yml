@@ -1,0 +1,21 @@
+version: '3'
+services:
+  php:
+    build:
+      context: ./php
+    volumes:
+      - ./pico:/var/www/html/pico
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        TZ: $TZ
+    ports:
+      - "80:8080"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.
+      - ./pico:/var/www/html/pico
+    depends_on:
+      - php
