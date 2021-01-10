@@ -1,5 +1,7 @@
 # Pico for docker
 
+## Inisital setting
+
 ```
-composer create-project picocms/pico-composer pico
+docker-compose exec php composer create-project picocms/pico-composer pico
 ```
